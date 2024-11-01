@@ -1,0 +1,52 @@
+INSTALLATION ON SERVER:
+sudo apt-get update
+
+Installing java:
+sudo apt install openjdk-17-jdk   --it requires jdk 17 version
+
+Installing maven:
+sudo apt install maven
+mvn --version
+
+Installing trivi:
+sudo apt-get install wget apt-transport-https gnupg lsb-release
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy
+
+Installing jenkins:
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install Jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+  
+Installing docker: 
+sudo apt-get install docker.io -y
+sudo usermod -aG docker ubuntu
+sudo usermod -aG docker Jenkins
+newgrp docker
+sudo chmod 777 /var/run/docker.sock
+sudo service docker start
+docker --version
+
+Run Sonarqube:
+docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+
+SETUP & LOGIN TO THE JENKINS AND THEN INSTALL THIS PLUGINS:
+DOCKER
+DOCKER COMMONS
+DOCKER PIPELINE
+DOCKER API
+DOCKER BUILD STEP
+MAVEN INTEGRATION
+SONARQUBE SCANNER
+ECLIPSE TEMURIN INSTALLER
+OWASP DEPENDENCY CHECK
+  
