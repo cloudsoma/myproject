@@ -30,7 +30,7 @@ sudo systemctl enable jenkins
 Installing docker: 
 sudo apt-get install docker.io -y
 sudo usermod -aG docker ubuntu
-sudo usermod -aG docker Jenkins
+sudo usermod -aG docker jenkins
 newgrp docker
 sudo chmod 777 /var/run/docker.sock
 sudo service docker start
