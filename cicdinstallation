@@ -2,10 +2,10 @@ INSTALLATION ON SERVER:
 sudo apt-get update
 
 Installing java:
-sudo apt install openjdk-17-jdk   --it requires jdk 17 version
+sudo apt install openjdk-17-jdk -y  --it requires jdk 17 version
 
 Installing maven:
-sudo apt install maven
+sudo apt install maven -y
 mvn --version
 
 Installing trivi:
@@ -22,7 +22,7 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
-sudo apt-get install jenkins
+sudo apt-get install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
